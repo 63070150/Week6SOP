@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 //@Data //????
 @Document("Wizard")
-public class Wizard implements Serializable { //??when to Serializable
+public class Wizard implements Serializable { //??
     @Id //????
     private String _id;
     private String sex, name, school, house, position;

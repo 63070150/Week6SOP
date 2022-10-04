@@ -11,12 +11,17 @@ public class WizardService {
     @Autowired
     private WizardRepository repository;
 
+    public WizardService(WizardRepository repository) {
+        this.repository = repository;
+    }
+
     public List<Wizard> getWizards(){
-        return repository.findAll();
+        System.out.println(repository.findAll());
+        return null;
     }
 
     public Wizard addWizard(Wizard w){
-        w.set_id(null);//nani?
+        w.set_id(null);//??
         return repository.save(w);
     }
 

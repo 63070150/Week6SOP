@@ -13,12 +13,16 @@ public class WizardController {
     @Autowired
     private WizardService service; //why Service??
 
+    public WizardController(WizardService service) {
+        this.service = service;
+    }
+
     @RequestMapping(value = "/wizards", method = RequestMethod.GET)
     public List<Wizard> getWizards(){
         return service.getWizards();
     }
 
-    @RequestMapping(value = "/addWizard", method = RequestMethod.POST) //kim forgot /addWizard /////
+    @RequestMapping(value = "/addWizard", method = RequestMethod.POST)
     public Wizard addWizard(@RequestBody Wizard w){
         return service.addWizard(w);
     }
@@ -31,5 +35,5 @@ public class WizardController {
     @RequestMapping(value = "/deleteWizard", method = RequestMethod.POST)
     public boolean deleteWizard(@RequestBody Wizard w){
         return service.deleteWizard(w);
-    }
+    }//service.deleteWizard(w)
 }

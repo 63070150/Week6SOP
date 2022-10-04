@@ -3,11 +3,11 @@ package com.example.week6sop;
 import java.util.ArrayList;
 import java.util.List;
 
-//Arraylist for Wizard?
 public class Wizards {
-    private List<Wizard> wizards; //??why List
+    private List<Wizard> wizards;
 
     public Wizards(){
+
         this.wizards = new ArrayList<Wizard>();
     }
 

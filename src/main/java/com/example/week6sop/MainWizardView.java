@@ -76,8 +76,8 @@ public class MainWizardView extends VerticalLayout {
                     .retrieve()
                     .bodyToMono(Wizard.class)
                     .block();
-            Index = wizards.getWizards().size();
-            updateAll();
+            Index = wizards.getWizards().size()-1;
+//            updateAll();
             refresh();
         });
         up.addClickListener(e -> {
@@ -112,6 +112,7 @@ public class MainWizardView extends VerticalLayout {
         });
     }
     private void refresh() {
+        System.out.println("refresh()");
         List<Wizard> w = WebClient
                 .create()
                 .get()
@@ -119,10 +120,13 @@ public class MainWizardView extends VerticalLayout {
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<Wizard>>() {})
                 .block();
+        System.out.println("size : " + w.size());
         this.wizards.setWizards(w);
         updateAll();
     }
     private void updateAll() {
+        System.out.println(Index);
+        System.out.println(wizards.getWizards().size());
         pre.setEnabled(!(Index == 0));
         name.setValue(wizards.getWizards().get(Index).getName());
         gen.setValue(wizards.getWizards().get(Index).getSex().equals("m") ? "Male" : "Female");
